@@ -2,8 +2,6 @@ package etsyMobile;
 
 import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
-import io.appium.java_client.android.nativekey.AndroidKey;
-import io.appium.java_client.android.nativekey.KeyEvent;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -16,9 +14,9 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.concurrent.TimeUnit;
 
-public class Login2Test {
+public class LoginEmailTest {
 
-    public AppiumDriver<WebElement> driver;
+    public AppiumDriver driver;
     public WebDriverWait wait;
 
     String emailAdress="ayhankaykac19@gmail.com";
@@ -40,8 +38,8 @@ public class Login2Test {
             capabilities.setCapability("noReset","false");
             //capabilities.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
 
-            driver =new AndroidDriver<WebElement>(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
-            wait=new WebDriverWait(driver,5);
+            driver =new AndroidDriver(new URL("http://127.0.0.1:4723/wd/hub"),capabilities);
+            //wait=new WebDriverWait(driver,5);
 
         }
         catch (MalformedURLException urlException){
@@ -60,7 +58,7 @@ public class Login2Test {
         driver.manage().timeouts().implicitlyWait(2, TimeUnit.SECONDS);
 
         //CONTINU BOTUN TIKLA
-        WebElement continueButon = driver.findElementById("com.etsy.android:id/sign_in_button_email");
+        WebElement continueButon = driver.findElement(By.id("com.etsy.android:id/sign_in_button_email"));
         continueButon.click();
         Thread.sleep(5000);
 
